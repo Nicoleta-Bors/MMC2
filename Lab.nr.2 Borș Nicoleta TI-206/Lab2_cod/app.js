@@ -34,8 +34,7 @@ const minimMetodaDirectiilorConjugate = () => {
     gradientNext = gradientFunction(xNext[0], xNext[1]);
     magnitudinePatratNext = magnitudinePatratFunction(gradientNext[0], gradientNext[1]);
 
-    if (Math.sqrt(magnitudinePatratNext) == 0 || Math.sqrt(magnitudinePatratNext) <= EPSILON)
-      execute = false;
+    if (Math.sqrt(magnitudinePatratNext) == 0) execute = false;
     else {
       dNext = [
         -gradientNext[0] + (magnitudinePatratNext / magnitudinePatrat) * d[0],
