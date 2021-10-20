@@ -1,6 +1,6 @@
 //prettier-ignore
 const A = 6, B = 3, matriceaHessiana = [2 * A, 3, 3, 2 * B];
-const EPSILON = Math.pow(10, -6);
+const EPSILON = Math.pow(10, -3);
 const myFunction = (x, y) => A * Math.pow(x, 2) + 3 * x * y + B * Math.pow(y, 2) - A * x - B * y;
 const gradientFunction = (x, y) => [2 * A * x + 3 * y - A, 3 * x + 2 * B * y - B];
 const magnitudinePatratFunction = (x, y) => Math.pow(x, 2) + Math.pow(y, 2);
@@ -12,7 +12,7 @@ const minimMetodaDirectiilorConjugate = () => {
   let gradientNext = gradientFunction(xNext[0], xNext[1]);
   let magnitudinePatratNext = magnitudinePatratFunction(gradientNext[0], gradientNext[1]);
 
-  if (Math.sqrt(magnitudinePatratNext) == 0 || Math.sqrt(magnitudinePatratNext) <= EPSILON)
+  if (Math.sqrt(magnitudinePatratNext) == 0 /*|| Math.sqrt(magnitudinePatratNext) <= EPSILON*/)
     execute = false;
   else dNext = [-gradientNext[0], -gradientNext[1]];
 
@@ -34,7 +34,8 @@ const minimMetodaDirectiilorConjugate = () => {
     gradientNext = gradientFunction(xNext[0], xNext[1]);
     magnitudinePatratNext = magnitudinePatratFunction(gradientNext[0], gradientNext[1]);
 
-    if (Math.sqrt(magnitudinePatratNext) == 0) execute = false;
+    if (Math.sqrt(magnitudinePatratNext) == 0 /*|| Math.sqrt(magnitudinePatratNext) <= EPSILON*/)
+      execute = false;
     else {
       dNext = [
         -gradientNext[0] + (magnitudinePatratNext / magnitudinePatrat) * d[0],
